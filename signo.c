@@ -7,12 +7,10 @@
 static void sighandler(int signo){
   if(signo == SIGINT){
     char * file = "error.txt";
-    int file_id_2 = open(file, O_CREAT); 
-    int file_id = open(file, O_APPEND);
+    int file_id = open(file, O_CREAT|O_EXCL|O_WRONLY);
 
-    int write_size = write(file_id, "Exit due to SIGINT\n", 64);
+    int write_size = write(file_id, "Exit due to SIGINT\n", 32);
     close(file_id);
-    close(file_id_2);
     printf("\nExiting the Program\n");
     exit(0);
   }else if(signo == SIGUSR1){
