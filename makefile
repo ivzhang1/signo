@@ -1,8 +1,5 @@
-signo : signo.o
-	gcc -o signo.o signo
-
-signo.o:
-	gcc -c signo.c
+signo : signo.c
+	gcc signo.c -o signo
 
 run:
 	./signo
